@@ -1,0 +1,37 @@
+<%- include('../partials/header.ejs')%>
+    <div class = "content">
+        <div class="fclass">
+            <img class="showserviceimage" src="<%= servicebyid.logo%>" alt="<%= servicebyid.Name%>">        
+      </div>
+    <div class="serviceclass">
+        <form>
+         <p class="pclass"><%=servicebyid.Description %></p>
+         <p class="pclass"> <b>Hosted By  </b><%=servicebyid.author.firstName%> <%=servicebyid.author.lastName%></p>
+        <p class="pclass"> <b>Pet :</b><%=servicebyid.Name %></p>
+        <p class="pclass"> <b>Owner :</b> <%=servicebyid.OwnerName %></p>
+        <p class="pclass"> <b>Breed :</b> &nbsp;&nbsp; <%=servicebyid.Breed %></p>
+        <p class="pclass"> <b>Service :</b> :&nbsp; <%=servicebyid.Service %></p>
+        <p class="pclass"> <b>Date :</b> &nbsp; <%=servicebyid.Date_implemented %></p>
+        <p class="pclass"> <b>Start Time :</b> &nbsp; <%=servicebyid.start_time %></p>
+        <p class="pclass"> <b>End Time :</b> &nbsp; <%=servicebyid.end_time %></p>
+        <%if(rsvpcount>0){%>
+        <p class="rsvpclass"> <b>Total  <%=rsvpcount %> People prefer this service</b></p>
+        <%}%>
+        <%if(user){%>
+          <% if(user.email== servicebyid.author.email){%>
+            <button class="button" type="submit" formmethod="GET" formaction="/petservices/<%=servicebyid.id%>/edit">Update</button>
+            <button class="button" type="submit" formmethod="POST" formaction="/petservices/<%= servicebyid.id%>?_method=DELETE">Delete</button>
+          <% }%>
+          <% if(user.email !== servicebyid.author.email){%>
+              <p class="rsvpclass"><b>Would you prefer this service?</b></p>
+              <button class="rsvpbutton" type="submit" formmethod="POST" formaction="/petservices/rsvpevent?rsvp=Yes&serviceid=<%=servicebyid.id%>">Yes</button>
+              <button class="rsvpbutton" type="submit" formmethod="POST" formaction="/petservices/rsvpevent?rsvp=No&serviceid=<%=servicebyid.id%>">No</button>
+              <button class="rsvpbutton" type="submit"formmethod="POST" formaction="/petservices/rsvpevent?rsvp=Maybe&serviceid=<%=servicebyid.id%>">Maybe</button>
+          <% }%>
+          <%}%>
+       
+        </form>
+      </div>
+      <br style="clear:both;"/>
+      </div>
+<%- include('../partials/footer.ejs')%>

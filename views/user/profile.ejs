@@ -1,0 +1,75 @@
+
+<%- include('../partials/header.ejs')%>
+    <div class="content">
+    <%if(unique.length){%>
+        <p> <b><%=user.firstName%> <%=user.lastName%>,</b> You have following services</p>
+    <table id="profile-tab">
+          <tr>
+            <td>Service</td>
+            <td>Breed</td>
+            <td>Action</td>
+          </tr>
+        <%unique.forEach(element=>{%>
+          <tr>
+            <td><%=element%></td>
+            <td>
+              <table>
+                <%if(myServiceMap.get(element).length){%>
+                    <%myServiceMap.get(element).forEach(element=>{%>
+               <tr>
+                 <td><a href="/petservices/<%=element.id%>"><%=element.Name%>&nbsp;(<%=element.Breed%>)</a></td>
+               </tr>
+               <%})%>
+               <%}%>
+              </table>
+            </td>
+            <td>
+                <table>
+                  <%if(myServiceMap.get(element).length){%>
+                      <%myServiceMap.get(element).forEach(element=>{%>
+                 <tr>
+                <td> 
+                    <form>    
+                    <button class="button" type="submit" formmethod="GET" formaction="/petservices/<%=element.id%>/edit">Update</button>
+                    <button class="button" type="submit" formmethod="POST" formaction="/petservices/<%= element.id%>?_method=DELETE">Delete</button>
+                </form>
+                </td>
+                 </tr>
+                 <%})%>
+                 <%}%>
+                </table>
+              </td>
+          </tr>
+          <%})%>
+        </table>
+        <% }else{%>
+            <p>There are no services</p>
+       <%}%> 
+       <%if(rsvpdata.length){%>
+        <p> <b><%=user.firstName%> <%=user.lastName%>,</b> You have created following Prefrences</p>
+    <table id="profile-tab">
+          <tr>
+            <td>Service</td>
+            <td>Prefrences</td>
+            <td>Action</td>
+          </tr>
+        <%rsvpdata.forEach(element=>{%>
+          <tr>
+            <td><a href="/petservices/<%=element.serviceid%>"><%=element.serviceid%></a></td>
+            <td><%=element.rsvp%>
+              <td> 
+                <form>    
+                <button class="button" type="submit" formmethod="GET" formaction="/petservices/<%=element.serviceid%>">Update</button>
+                <button class="button" type="submit" formmethod="POST" formaction="/petservices/rsvpdelete/<%= element.serviceid%>?_method=DELETE">Delete</button>
+            </form>
+            </td>
+          </tr>
+          <%})%>
+    
+          <% }else{%>
+            <td colspan="2"><b>There are no Prefrences for any service</b></p>
+       <%}%> 
+        </table>
+       
+    </div>
+    <%- include('../partials/footer.ejs')%>

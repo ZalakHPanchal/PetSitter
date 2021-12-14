@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Petsitter</title>
+</head>
+<body>
+    <nav>
+        <div class="col">
+            <div class="col-md-25">
+                <a href="/" class=""><img src="/images/photo-1589652717406-1c69efaf1ff8.jpg" alt="logo"></a>
+                <a href='/'>Home</a>
+                <a href="/petservices">Services</a>
+                <%if(user){%>
+                    <a href="/petservices/createservice" class="">Service Appointment</a>
+                <%}%>
+        </div>
+                <div class="md-75">
+                    <%if(user){%>
+                    Welcome, <%=user.firstName%> <%=user.lastName%>
+                    <%}%>   
+                </div>
+        </div>
+        <div class="col-75">
+            <hr style="width: 100%;">
+            <div class="right">
+                <%if(!user){%>
+                    <a href="/users/login" >Log in</a>
+                    <a href="/users/new" >Sign Up</a>
+                <%}
+                else{%>
+                    <a href='/users/profile'>Profile</a>
+                    <a href='/users/logout'>Logout</a>
+               <% }%>
+            </div>
+        </div>  
+    </nav>
+    <% if(errorMessages.length > 0) {%>
+        <% errorMessages.forEach(message=>{%>
+            <div class='error'>
+                <%=message%>
+            </div>
+            <%});%>
+                <%}%>
+    
+                    <% if(successMessages.length > 0) {%>
+    
+                        <% successMessages.forEach(message=>{%>
+                            <div class='success'>
+                                <%=message%>
+                            </div>
+                            <%});%>
+                                <%}%>

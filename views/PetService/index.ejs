@@ -1,0 +1,20 @@
+<%- include('../partials/header.ejs')%>
+    <div class = "content">
+    <%if(unique.length){%>
+        <%unique.forEach(element=>{%>
+          <h3><%=element%></h3>
+          <%if(myServiceMap.get(element).length){%>
+              <%myServiceMap.get(element).forEach(element=>{%>
+                  <ul>
+                    <li><a href="/petservices/<%=element.id%>"><%=element.Name%>&nbsp;(<%=element.Breed%>)</a></li>
+                  </ul>
+
+              <%})%>
+          <%}%>
+
+        <%})%>
+   <% }else{%>
+        <p>There are no services</p>
+   <%}%>  
+</div>
+<%- include('../partials/footer.ejs')%>

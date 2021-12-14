@@ -1,0 +1,50 @@
+<%- include('../partials/header.ejs')%>
+<div class="content">
+    <form action='/petservices' method='POST'>
+        <table>
+            <tr>
+                <td><label for="title">Name</label></td>
+                <td><input type="text" id="Name" name="Name" class = "fixed-width" required></td>
+            </tr>
+            <tr>
+                <td><label for="title">OwnerName</label></td>
+                <td><input type="text" id="OwnerName" name="OwnerName" class = "fixed-width" required></td>
+            </tr>
+            <tr>
+                <td><label for="title">Breed</label></td>
+                <td><input type="text" id="Breed" name="Breed" class = "fixed-width" required></td>
+            </tr>
+            <tr>
+                <td><label for="title">Service</label></td>
+                <td><input oninput="this.value = this.value.toUpperCase()"  type="text" id="Service" name="Service" class = "fixed-width" required></td>
+            </tr>
+            <tr>
+                <td><label for="title">Date</label></td>
+                <td> <input type="date" id="Date_implemented" name="Date_implemented" class="fixed-width" required></td>
+            </tr>
+            <tr>
+                <td><label for="title">Start Time</label></td>
+                <td><input type="time" id="start_time" name="start_time" class="fixed-width" required></td>
+            </tr>
+            <tr>
+                <td><label for="title">End Time</label></td>
+                <td> <input type="time" id="end_time" name="end_time" class="fixed-width" required></td>
+            </tr> 
+            <tr>
+                <td><label for="title">Description</label></td>
+                <td> <input type="text" id="Description" name="Description" class="fixed-width" required></td>
+            </tr>
+            <tr>
+                <td><label for="title">Picture</label></td>
+                <td><input type="text" id="logo" name="logo" class = "fixed-width" placeholder="Paste web link here" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="align-right"><button class="button buttonnewclass">Submit</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<%- include('../partials/footer.ejs')%>
+
+
+   

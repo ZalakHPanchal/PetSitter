@@ -1,0 +1,50 @@
+<%- include('../partials/header.ejs')%>
+<div class="content">
+    <form method="POST" action="/petservices/<%=editservice.id%>?_method=PUT">
+        <table>
+            <tr>
+                <td><label for="title">Name</label></td>
+                <td><input type="text" id="Name" name="Name" value="<%=editservice.Name%>" class = "fixed-width" ></td>
+            </tr>
+            <tr>
+                <td><label for="title">OwnerName</label></td>
+                <td><input type="text" id="OwnerName" name="OwnerName" value="<%=editservice.OwnerName%>" class = "fixed-width" ></td>
+            </tr>
+            <tr>
+                <td><label for="title">Breed</label></td>
+                <td><input type="text" id="Breed" name="Breed" value="<%=editservice.Breed%>" class = "fixed-width" ></td>
+            </tr>
+            <tr>
+                <td><label for="title">Service</label></td>
+                <td><input oninput="this.value = this.value.toUpperCase()" type="text" id="Service" name="Service" value="<%=editservice.Service%>" class = "fixed-width" ></td>
+            </tr>
+            <tr>
+                <td><label for="title">Date</label></td>
+                <td> <input type="date" id="Date_implemented" name="Date_implemented" value="<%=editservice.Date_implemented%>" class="fixed-width" ></td>
+            </tr>
+            <tr>
+                <td><label for="title">Start Time</label></td>
+                <td><input type="time" id="start_time" name="start_time" value="<%=editservice.start_time%>" class="fixed-width" ></td>
+            </tr>
+            <tr>
+                <td><label for="title">End Time</label></td>
+                <td> <input type="time" id="end_time" name="end_time" value="<%=editservice.end_time%>" class="fixed-width" ></td>
+            </tr> 
+            <tr>
+                <td><label for="title">Description</label></td>
+                <td> <input type="text" id="Description" name="Description" value="<%=editservice.Description%>" class="fixed-width" ></td>
+            </tr>
+            <tr>
+                <td><label for="title">Picture</label></td>
+                <td><input type="text" id="logo" name="logo" value="<%=editservice.logo%>" class = "fixed-width" placeholder="Paste web link here" ></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button class="button buttonnewclass">Update</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<%- include('../partials/footer.ejs')%>
+
+
+   
